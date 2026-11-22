@@ -1,0 +1,11 @@
+.superpowers/
+node_modules/
+.next/
+.vercel/
+.env*
+out/
+*.tsbuildinfo
+.pnpm-store/
+output/
+.playwright-cli/
+.private/

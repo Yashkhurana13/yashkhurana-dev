@@ -1,0 +1,69 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html,body{margin:0;width:1280px;height:769px;overflow:hidden}
+  body{background:#f6f3ee;font-family:Inter,-apple-system,"Helvetica Neue",Arial,sans-serif;color:#1d1b18;display:flex}
+  .left{flex:1.05;padding:70px 64px;display:flex;flex-direction:column;justify-content:center}
+  .eyebrow{font-size:20px;letter-spacing:.12em;color:#3d7a52;font-weight:600;margin-bottom:22px}
+  h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:66px;line-height:1.05;margin:0}
+  h1 i{color:#b4532a}
+  ul{list-style:none;padding:0;margin:34px 0 0;font-size:24px;color:#4a453e;line-height:1.75}
+  li:before{content:"✓  ";color:#3d7a52;font-weight:700}
+  .who{margin-top:38px;font-size:19px;color:#6b655c}
+  .who b{color:#1d1b18}
+  .right{flex:.95;display:flex;align-items:center;justify-content:center;padding-right:56px}
+  .card{width:100%;background:#fffdf9;border:1px solid #e4ddd1;border-radius:22px;box-shadow:0 24px 60px rgba(60,40,20,.13);overflow:hidden}
+  .bar{display:flex;justify-content:space-between;padding:18px 24px;border-bottom:1px solid #eee7dc;font-size:17px;color:#6b655c}
+  .bar b{color:#3d7a52}
+  .body{padding:22px 24px;font-family:Menlo,"SF Mono",monospace;font-size:18px;line-height:2;color:#3a362f}
+  .n{color:#a39a8c;margin-right:12px}
+  .warn{color:#b4532a}.ok{color:#3d7a52;font-weight:600}
+  .foot{border-top:1px solid #eee7dc;padding:16px 24px;font-size:16px;color:#6b655c}
+</style></head>
+<body>
+  <div class="left">
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 id="title"></h1>
+    <ul id="points"></ul>
+    <div class="who"><b>Yash Khurana</b> · AI agent developer</div>
+  </div>
+  <div class="right"><div class="card">
+    <div class="bar"><span id="cardtitle"></span><b>● live</b></div>
+    <div class="body" id="log"></div>
+    <div class="foot" id="foot"></div>
+  </div></div>
+<script>
+const G = {
+  agent: {
+    eyebrow: "CUSTOM AI AGENTS & CHATBOTS",
+    title: "AI that does the work,<br><i>not just the talking.</i>",
+    points: ["Trained on your documents", "Works in Slack, email & your CRM", "Source code + handover"],
+    cardtitle: "support-agent",
+    log: [["Customer asks about refund policy",""],["Searching your help docs…",""],["Found: Refunds, section 3",""],["Order #4821 is 9 days old","warn"],["✓ Refund approved, CRM updated","ok"]],
+    foot: "Answered in 4 s · logged to your CRM"
+  },
+  scrape: {
+    eyebrow: "WEB SCRAPING & DATA",
+    title: "Clean data from any site,<br><i>on a schedule.</i>",
+    points: ["Pagination & detail pages", "CSV, Sheets, database or API", "Fixes itself when the site changes"],
+    cardtitle: "daily-scraper",
+    log: [["Opening listings page…",""],["Found 50 rows × 4 pages",""],["Fields: title · price · date · link",""],["1 date format changed — fixed","warn"],["✓ 200 rows → Google Sheets","ok"]],
+    foot: "Runs daily at 6:00 · alerts on failure"
+  },
+  web: {
+    eyebrow: "FULL-STACK WEB APPS",
+    title: "Your MVP, live<br><i>and yours to keep.</i>",
+    points: ["Next.js or Django", "Login, payments, dashboards", "Deployed, with docs"],
+    cardtitle: "release",
+    log: [["Auth: email + OTP",""],["Payments: Razorpay / Stripe",""],["Admin dashboard",""],["Lighthouse 98 / 100","warn"],["✓ Deployed to your domain","ok"]],
+    foot: "Weekly demos · you own the code"
+  }
+}[new URLSearchParams(location.search).get("g") || "agent"];
+document.getElementById("eyebrow").textContent = G.eyebrow;
+document.getElementById("title").innerHTML = G.title;
+document.getElementById("points").innerHTML = G.points.map(p => `<li>${p}</li>`).join("");
+document.getElementById("cardtitle").textContent = G.cardtitle;
+document.getElementById("log").innerHTML = G.log.map((l,i) => `<div><span class="n">0${i+1}</span><span class="${l[1]}">${l[0]}</span></div>`).join("");
+document.getElementById("foot").textContent = G.foot;
+</script>
+</body></html>
