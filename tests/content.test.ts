@@ -77,12 +77,13 @@ test("published content excludes private names and excluded subjects", () => {
   scan("src");
 });
 
-test("empty profile URLs stay hidden and contact is configured", () => {
-  assert.equal(site.upworkUrl, "");
-  assert.equal(site.fiverrUrl, "");
+test("profile links skip empty URLs and contact is configured", () => {
+  const expected = ["Email", "GitHub", "LinkedIn", "Upwork", "Fiverr"].filter(
+    (label) => label !== "Upwork" || site.upworkUrl,
+  ).filter((label) => label !== "Fiverr" || site.fiverrUrl);
   assert.deepEqual(
     profileLinks().map((link) => link.label),
-    ["Email", "GitHub", "LinkedIn"],
+    expected,
   );
   assert.equal(site.emailUrl, `mailto:${site.email}?subject=Project%20enquiry`);
 });

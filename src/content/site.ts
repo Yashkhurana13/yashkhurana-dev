@@ -5,7 +5,7 @@ export const site = {
   emailUrl: "mailto:khuranay250@gmail.com?subject=Project%20enquiry",
   githubUrl: "https://github.com/Yashkhurana13",
   linkedinUrl: "https://www.linkedin.com/in/yashkhurana13",
-  upworkUrl: "",
+  upworkUrl: "https://www.upwork.com/freelancers/~01a7a8e3529eeaa766",
   fiverrUrl: "",
   title: "Yash Khurana — AI agents & full-stack web apps",
   description:
